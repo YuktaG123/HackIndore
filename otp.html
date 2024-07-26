@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Pop-up Example</title>
+    <style>
+        :root {
+            /* Primary Colors */
+            --navy-color: #05445E;
+            --blue-color: #189AB4;
+            --blue-light: #D4F1F4;
+            --green-color: #aee6e0;
+        }
+
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('bg_reg.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(5, 4, 4, 0.5); /* Adjust the opacity (last value) */
+            background-blend-mode: overlay;
+        }
+
+        .otp-popup {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .otp-popup-content {
+            background-color: var(--blue-light);
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+            position: relative;
+            transition: ease-in-out 0.3s;
+        }
+
+        .otp-popup-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .otp-popup-content input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid var(--navy-color);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            transition: all 0.5s ease;
+        }
+
+        .otp-popup-content input[type="text"]:hover {
+            border-color: var(--navy-color);
+            background-color: var(--green-color);
+            transform: scale(1.02);
+        }
+
+        .otp-popup-content button {
+            background-color: var(--blue-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.5s ease;
+        }
+
+        .otp-popup-content button:hover {
+            background-color: var(--navy-color);
+            transform: scale(1.03);
+        }
+
+        .otp-popup-content .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            color: #aaa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .otp-popup-content .close-btn:hover {
+            color: red;
+            transform: scale(1.3);
+        }
+
+        .otp-popup-content #resendOtpBtn {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transition: all 0.3s ease;
+        }
+
+        .otp-popup-content #resendOtpBtn:enabled {
+            background-color: var(--blue-color);
+            cursor: pointer;
+        }
+
+        .otp-popup-content #resendOtpBtn:enabled:hover {
+            background-color: var(--navy-color);
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+    <!-- OTP Popup -->
+    <div id="otpPopup" class="otp-popup">
+        <div class="otp-popup-content">
+            <span class="close-btn" onclick="closeOtpPopup()">&times;</span>
+            <h2>Enter OTP</h2>
+            <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="6">
+            <button onclick="submitOtp()">Submit</button>
+            <button id="resendOtpBtn" onclick="resendOtp()" disabled>Resend OTP in <span id="resendTimer">30</span> sec</button>
+        </div>
+    </div>
+
+    <script>
+        function openOtpPopup() {
+            document.getElementById('otpPopup').style.display = 'block';
+            startResendTimer();
+        }
+
+        function closeOtpPopup() {
+            document.getElementById('otpPopup').style.display = 'none';
+        }
+
+        function submitOtp() {
+            const otp = document.getElementById('otpInput').value;
+            if (otp.length === 6) {
+                alert('OTP submitted successfully!');
+                closeOtpPopup();
+                redirectToUserPortal();
+            } else {
+                alert('Please enter a valid 6-digit OTP.');
+            }
+        }
+
+        let resendTimerEl = document.getElementById('resendTimer');
+        let resendOtpBtn = document.getElementById('resendOtpBtn');
+
+        function startResendTimer() {
+            let seconds = 30;
+            resendOtpBtn.disabled = true;
+            resendTimerEl.textContent = seconds;
+
+            let countdown = setInterval(() => {
+                seconds--;
+                resendTimerEl.textContent = seconds;
+
+                if (seconds <= 0) {
+                    clearInterval(countdown);
+                    resendOtpBtn.disabled = false;
+                }
+            }, 1000);
+        }
+
+        function resendOtp() {
+            startResendTimer();
+            // Logic to resend OTP goes here
+            alert("OTP Resent!");
+        }
+
+        function displaySuccessMessage() {
+            alert("OTP Verified Successfully!");
+        }
+
+        function redirectToUserPortal() {
+            window.location.href = "personal.html"; // Replace with your actual user portal page
+        }
+
+        // Open the OTP popup as soon as the page loads
+        window.onload = openOtpPopup;
+    </script>
+</body>
+</html>

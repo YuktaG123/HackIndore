@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration with OTP</title>
+    <link rel="stylesheet" href="registration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="modal">
+        <button class="close-btn" onclick="window.location.href='index.html'">
+            <i class="fas fa-times-circle"></i>
+        </button>
+        <form id="registerForm" action="login.html" method="post" onsubmit="return openOtpPopup(event)">
+            <h1>Register Here</h1>
+            <div class="input-box">
+                <div class="select-container">
+                    <select id="role" name="role" required>
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+                        <option value="Employee">Employee</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="input-box">
+                <input type="text" id="username" name="username" placeholder="Full Name" required>
+            </div>
+            <div class="input-box">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="input-box">
+                <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number" maxlength="10" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="input-box">
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox" id="agree" name="agree" required> I agree to the terms and conditions
+                </label>
+            </div>
+            <button class="btn" type="submit" onclick="window.location.href='otp.html'">Register</button>
+            <p>Already have an account? <a href="login.html"><strong>Login Now</strong></a></p>
+        </form>
+    </div>
+    <script src="registration.js"></script>
+</body>
+</html>
