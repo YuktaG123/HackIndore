@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tender Form for e-Office Portal</title>
+    <link rel="stylesheet" href="tender.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tender Form for e-Office Portal</h1>
+
+        <form action="submit_tender.php" method="post">
+            <section>
+                <h2>1. Project Information</h2>
+                <label for="projectTitle">Project Title:</label>
+                <input type="text" id="projectTitle" name="projectTitle" value="e-Office Portal for Municipal Office" readonly>
+
+                <label for="projectDescription">Project Description:</label>
+                <textarea id="projectDescription" name="projectDescription" readonly>Development of an e-office portal to auto-assign tasks to employees, considering employee leaves and workload balance.</textarea>
+
+                <label for="tenderRef">Tender Reference Number:</label>
+                <input type="text" id="tenderRef" name="tenderRef">
+
+                <label for="issueDate">Issue Date:</label>
+                <input type="date" id="issueDate" name="issueDate">
+
+                <label for="closingDate">Closing Date:</label>
+                <input type="date" id="closingDate" name="closingDate">
+
+                <label for="contactPerson">Contact Person:</label>
+                <input type="text" id="contactPerson" name="contactPerson">
+
+                <label for="contactPhone">Phone Number:</label>
+                <input type="tel" id="contactPhone" name="contactPhone">
+
+                <label for="contactEmail">Email Address:</label>
+                <input type="email" id="contactEmail" name="contactEmail">
+            </section>
+
+            <section>
+                <h2>2. Applicant Information</h2>
+                <label for="companyName">Company Name:</label>
+                <input type="text" id="companyName" name="companyName">
+
+                <label for="address">Address:</label>
+                <textarea id="address" name="address"></textarea>
+
+                <label for="applicantContactPerson">Contact Person:</label>
+                <input type="text" id="applicantContactPerson" name="applicantContactPerson">
+
+                <label for="applicantPhone">Phone Number:</label>
+                <input type="tel" id="applicantPhone" name="applicantPhone">
+
+                <label for="applicantEmail">Email Address:</label>
+                <input type="email" id="applicantEmail" name="applicantEmail">
+
+                <label for="companyRegNo">Company Registration Number:</label>
+                <input type="text" id="companyRegNo" name="companyRegNo">
+
+                <label for="taxId">Tax Identification Number:</label>
+                <input type="text" id="taxId" name="taxId">
+            </section>
+
+            <section>
+                <h2>3. Scope of Work</h2>
+                <label for="workDescription">Description of Work:</label>
+                <textarea id="workDescription" name="workDescription"></textarea>
+
+                <label for="deliverables">Expected Deliverables:</label>
+                <textarea id="deliverables" name="deliverables"></textarea>
+
+                <label for="projectTimeline">Project Timeline:</label>
+                <input type="text" id="projectTimeline" name="projectTimeline">
+
+                <label for="specialRequirements">Special Requirements:</label>
+                <textarea id="specialRequirements" name="specialRequirements"></textarea>
+            </section>
+
+            <section>
+                <h2>4. Financial Information</h2>
+                <label for="totalBidAmount">Total Bid Amount:</label>
+                <input type="number" id="totalBidAmount" name="totalBidAmount">
+
+                <label for="costBreakdown">Detailed Cost Breakdown:</label>
+                <textarea id="costBreakdown" name="costBreakdown"></textarea>
+            </section>
+
+            <section>
+                <h2>5. Qualifications and Experience</h2>
+                <label for="previousProjects">Previous Experience with Similar Projects:</label>
+                <textarea id="previousProjects" name="previousProjects"></textarea>
+
+                <label for="technicalExpertise">Technical Expertise:</label>
+                <textarea id="technicalExpertise" name="technicalExpertise"></textarea>
+
+                <label for="references">References:</label>
+                <textarea id="references" name="references"></textarea>
+            </section>
+
+            <section>
+                <h2>6. Legal and Compliance</h2>
+                <label for="compliance">Compliance with Regulations:</label>
+                <textarea id="compliance" name="compliance"></textarea>
+
+                <label for="insurance">Insurance Details:</label>
+                <textarea id="insurance" name="insurance"></textarea>
+
+                <label for="healthSafety">Health and Safety Policies:</label>
+                <textarea id="healthSafety" name="healthSafety"></textarea>
+            </section>
+
+            <section>
+                <h2>7. Declaration</h2>
+                <label for="declaration">I, the undersigned, declare that the information provided in this tender form is accurate and complete.</label>
+                <input type="text" id="declarationName" name="declarationName" placeholder="Name">
+                <input type="text" id="declarationPosition" name="declarationPosition" placeholder="Position">
+                <input type="date" id="declarationDate" name="declarationDate" placeholder="Date">
+                <input type="text" id="declarationSignature" name="declarationSignature" placeholder="Signature">
+            </section>
+
+            <button type="submit">Submit Tender</button>
+        </form>
+    </div>
+</body>
+</html>
